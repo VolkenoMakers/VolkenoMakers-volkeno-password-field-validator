@@ -1,10 +1,13 @@
 import React from 'react'
 
-import { ExampleComponent } from 'volkeno-password-field-validator'
+import { ValidatePassword } from 'volkeno-password-field-validator'
 import 'volkeno-password-field-validator/dist/index.css'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+
+  //const [password , setPassword] = useState<any>('');
+
+  return <ValidatePassword />
 }
 
 export default App
