@@ -1,7 +1,7 @@
 import React , { useState } from 'react'
 import styles from './styles.module.css'
 
-export const ValidatePassword = ({setPassword}:any) => {
+export const ValidatePassword = ({setPassword,password}:any) => {
 
   const [haveMinUppercase, setHaveMinUppercase] = useState<any>('');
   const [haveMinLowercase, setHaveMinLowercase] = useState<any>('');
@@ -98,6 +98,7 @@ export const ValidatePassword = ({setPassword}:any) => {
           type="password"
           name="password"
           placeholder="Mot de passe"
+          value={password}
           onChange={(e) => passwordHandleChange(e)}
         />
       </div>

@@ -1,8 +1,5 @@
 /* add css module styles here (optional) */
 
-.password_formate{
-
-}
 .password_validation_terms_row {
   border-bottom: none !important;
 }
@@ -53,12 +50,11 @@
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   color: #495057;
-  display: block;
+  display: flex;
   font-size: 1rem;
   font-weight: 400;
   height: calc(1.5em + 0.75rem + 2px);
   line-height: 1.5;
   padding: 0.375rem 0.75rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  width: 100%;
 }
