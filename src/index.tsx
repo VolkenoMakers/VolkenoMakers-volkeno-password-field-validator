@@ -1,7 +1,7 @@
 import React , { useState } from 'react'
 import styles from './styles.module.css'
 
-export const ValidatePassword = () => {
+export const ValidatePassword = ({setPassword}:any) => {
 
   const [haveMinUppercase, setHaveMinUppercase] = useState<any>('');
   const [haveMinLowercase, setHaveMinLowercase] = useState<any>('');
@@ -85,79 +85,76 @@ export const ValidatePassword = () => {
       setHaveMinSpecialCharacter(false);
     }
 
-  //  setPassword(password)
+    setPassword(password)
 
 
   };
 
   return (
-    <div style={{justifyContent: 'center', alignItems: 'center', margin: '5rem'}}>
-      <div className="pb-mobile-register">
+    <div>
+      <div className={styles.container_password} >
         <input
-          className={styles.password_formate}
+          className={styles.input_pwd}
           type="password"
           name="password"
           placeholder="Mot de passe"
           onChange={(e) => passwordHandleChange(e)}
         />
       </div>
-
-      <div className="password_validation_terms_row">
-        <div className="password_validation_terms_container">
-          <h4 className={styles.password_validation_terms_title+" "+
-                        (haveMinCharacter &&
-                         haveMinUppercase &&
-                         haveMinLowercase && 
-                         haveMinNumber && 
-                         haveMinSpecialCharacter && styles.password_validation_terms_title_ok )}>
-            Votre mot de passe doit contenir :{" "}
-          </h4>
-          <ul className="password_validation_terms_ul">
-            <li
-              className={
-                styles.min_character  +" "+
-                (haveMinCharacter && styles.min_character_count_ok )
-              }
-            >
-              Au minimum 8 caractères
-            </li>
-            <li
-              className={
-                styles.min_character  +" "+
-                (haveMinUppercase &&
-                  styles.min_character_uppercase_ok)
-              }
-            >
-              Au minimum 1 caractère en majuscule
-            </li>
-            <li
-              className={
-                styles.min_character  +" "+
-                (haveMinLowercase &&
-                  styles.min_character_lowercase_ok)
-              }
-            >
-              Au minimum 1 caractère en minuscule
-            </li>
-            <li
-              className={
-                styles.min_character +" "+
-                (haveMinNumber && styles.min_character_number_ok)
-              }
-            >
-              Au minimum 1 nombre
-            </li>
-            <li
-              className={
-                styles.min_character  +" "+
-                (haveMinSpecialCharacter &&
-                  styles.min_character_special_ok)
-              }
-            >
-              Au minimum 1 caractère spéciale
-            </li>
-          </ul>
-        </div>
+      <div className={styles.password_validation_terms_container}>
+        <h4 className={styles.password_validation_terms_title+" "+
+                      (haveMinCharacter &&
+                        haveMinUppercase &&
+                        haveMinLowercase && 
+                        haveMinNumber && 
+                        haveMinSpecialCharacter && styles.password_validation_terms_title_ok )}>
+          Votre mot de passe doit contenir :{" "}
+        </h4>
+        <ul className={styles.password_validation_terms_ul}>
+          <li
+            className={
+              styles.min_character  +" "+
+              (haveMinCharacter && styles.min_character_count_ok )
+            }
+          >
+            Au minimum 8 caractères
+          </li>
+          <li
+            className={
+              styles.min_character  +" "+
+              (haveMinUppercase &&
+                styles.min_character_uppercase_ok)
+            }
+          >
+            Au minimum 1 caractère en majuscule
+          </li>
+          <li
+            className={
+              styles.min_character  +" "+
+              (haveMinLowercase &&
+                styles.min_character_lowercase_ok)
+            }
+          >
+            Au minimum 1 caractère en minuscule
+          </li>
+          <li
+            className={
+              styles.min_character +" "+
+              (haveMinNumber && styles.min_character_number_ok)
+            }
+          >
+            Au minimum 1 nombre
+          </li>
+          <li
+            className={
+              styles.min_character  +" "+
+              (haveMinSpecialCharacter &&
+                styles.min_character_special_ok)
+            }
+          >
+            Au minimum 1 caractère spéciale
+          </li>
+        </ul>
       </div>
     </div>
   )

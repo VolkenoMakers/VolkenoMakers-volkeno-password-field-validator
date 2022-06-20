@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState }  from 'react'
 
 import { ValidatePassword } from 'volkeno-password-field-validator'
 import 'volkeno-password-field-validator/dist/index.css'
 
 const App = () => {
 
-  //const [password , setPassword] = useState<any>('');
+  const [password , setPassword] = useState<any>('');
 
-  return <ValidatePassword />
+  console.log(password)
+
+  return <ValidatePassword setPassword={setPassword}/>
 }
 
 export default App
