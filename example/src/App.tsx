@@ -7,9 +7,7 @@ const App = () => {
 
   const [password , setPassword] = useState<any>('');
 
-  console.log(password)
-
-  return <ValidatePassword setPassword={setPassword}/>
+  return <ValidatePassword value={password} setPassword={setPassword}/>
 }
 
 export default App
