@@ -13,14 +13,17 @@ npm install --save volkeno-password-field-validator
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 
-import MyComponent from 'volkeno-password-field-validator'
+import ValidatePassword from 'volkeno-password-field-validator'
 import 'volkeno-password-field-validator/dist/index.css'
 
 class Example extends Component {
+
+  const [password , setPassword] = useState<any>('');
+
   render() {
-    return <MyComponent />
+    return <ValidatePassword value={password} setPassword={setPassword} />
   }
 }
 ```
