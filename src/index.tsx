@@ -1,7 +1,24 @@
 import React , { useState } from 'react'
 import styles from './styles.module.css'
 
-export const ValidatePassword = ({setPassword,password}:any) => {
+export const ValidatePassword = ({
+  setPassword,
+  password,
+  validatorTitle,
+  characterCountLabel,
+  uppercaseCountLabel,
+  lowercaseCountLabel,
+  numericCountLabel,
+  specialCharacterCountLabel,
+  inputNameValue,
+  inputPlaceholderValue,
+  inputContainerClassName,
+  validatorTitleClassName,
+  listParentClassName,
+  listItemClassName,
+  validatorContainerClassName,
+  inputClassName
+  }: any) => {
 
   const [haveMinUppercase, setHaveMinUppercase] = useState<any>('');
   const [haveMinLowercase, setHaveMinLowercase] = useState<any>('');
@@ -58,7 +75,7 @@ export const ValidatePassword = ({setPassword,password}:any) => {
 
   const passwordHandleChange = (e: any) => {
     var password = e.target.value;
-   
+
     if (countUppercase(password)) {
       setHaveMinUppercase(true);
     } else {
@@ -92,68 +109,87 @@ export const ValidatePassword = ({setPassword,password}:any) => {
 
   return (
     <div>
-      <div className={styles.container_password} >
+      <div className={styles.container_password + ' ' + (inputContainerClassName && inputContainerClassName)} >
         <input
-          className={styles.input_pwd}
+          className={styles.input_pwd + ' ' + (inputClassName && inputClassName)}
           type="password"
-          name="password"
-          placeholder="Mot de passe"
+          name={inputNameValue ? inputNameValue : 'password'}
+          placeholder={ inputPlaceholderValue ? inputPlaceholderValue : 'Your password' }
           value={password}
           onChange={(e) => passwordHandleChange(e)}
         />
       </div>
-      <div className={styles.password_validation_terms_container}>
-        <h4 className={styles.password_validation_terms_title+" "+
+      <div className={styles.password_validation_terms_container + ' ' + (validatorContainerClassName && validatorContainerClassName)}>
+        <h4 className={(validatorTitleClassName && validatorTitleClassName) + ' ' +
+                    styles.password_validation_terms_title+" "+
                       (haveMinCharacter &&
                         haveMinUppercase &&
-                        haveMinLowercase && 
-                        haveMinNumber && 
+                        haveMinLowercase &&
+                        haveMinNumber &&
                         haveMinSpecialCharacter && styles.password_validation_terms_title_ok )}>
-          Votre mot de passe doit contenir :{" "}
+          {
+            validatorTitle ? validatorTitle + ' : ' : 'Your password must contain : '
+          }
+
         </h4>
-        <ul className={styles.password_validation_terms_ul}>
+        <ul className={styles.password_validation_terms_ul + ' ' + listParentClassName && listParentClassName}>
           <li
-            className={
+            className={(listItemClassName && listItemClassName) + ' ' +
               styles.min_character  +" "+
               (haveMinCharacter && styles.min_character_count_ok )
             }
           >
-            Au minimum 8 caractères
+            {
+              characterCountLabel ? characterCountLabel : 'At least 8 characters'
+            }
+
           </li>
           <li
-            className={
+            className={(listItemClassName && listItemClassName) + ' ' +
               styles.min_character  +" "+
               (haveMinUppercase &&
                 styles.min_character_uppercase_ok)
             }
           >
-            Au minimum 1 caractère en majuscule
+            {
+              uppercaseCountLabel ? uppercaseCountLabel : 'At least 1 uppercase character'
+            }
+
           </li>
           <li
-            className={
+            className={(listItemClassName && listItemClassName) + ' ' +
               styles.min_character  +" "+
               (haveMinLowercase &&
                 styles.min_character_lowercase_ok)
             }
           >
-            Au minimum 1 caractère en minuscule
+            {
+              lowercaseCountLabel ? lowercaseCountLabel : 'At least 1 lowercase character'
+            }
+
           </li>
           <li
-            className={
+            className={(listItemClassName && listItemClassName) + ' ' +
               styles.min_character +" "+
               (haveMinNumber && styles.min_character_number_ok)
             }
           >
-            Au minimum 1 nombre
+            {
+              numericCountLabel ? numericCountLabel : 'At least 1 numeric'
+            }
+
           </li>
           <li
-            className={
+            className={(listItemClassName && listItemClassName) + ' ' +
               styles.min_character  +" "+
               (haveMinSpecialCharacter &&
                 styles.min_character_special_ok)
             }
           >
-            Au minimum 1 caractère spéciale
+            {
+              specialCharacterCountLabel ? specialCharacterCountLabel : 'At least 1 special character'
+            }
+
           </li>
         </ul>
       </div>
